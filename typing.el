@@ -248,7 +248,7 @@ Answers are the sentences following a question."
   (switch-to-buffer (get-buffer-create toe-buffer-name))
   (setq buffer-read-only nil)
   (erase-buffer)
-  (insert "T h e   T y p i n g   O f   E m a c s . . .\n")
+  (insert (propertize "T h e   T y p i n g   O f   E m a c s . . .\n" 'face 'bold))
   (toe-status))
 
 ;; Asking for stuff and giving feedback
@@ -279,6 +279,7 @@ Answers are the sentences following a question."
 (defun toe-failure ()
   "Give failure feedback."
   (toe-feedback toe-failure-messages)
+  (sit-for 1)
   ;; dynamic binding!
   (setq toe-lives (1- toe-lives))
   (insert (format " - %d LIVES LEFT!" toe-lives))
